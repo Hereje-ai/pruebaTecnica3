@@ -1,0 +1,23 @@
+package co.com.serenity.project.tasks;
+
+import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.Tasks;
+import net.serenitybdd.screenplay.actions.Scroll;
+import net.thucydides.core.annotations.Step;
+
+import static co.com.serenity.project.ui.CartShopPage.TABLE_ITEMS;
+
+
+public class ViewPurchase implements Task {
+    public static ViewPurchase choose() {
+        return Tasks.instrumented(ViewPurchase.class);
+    }
+
+    @Override
+    @Step("{0} hace scroll hasta la tabla de items en el carrito de compras")
+    public <T extends Actor> void performAs(T actor) {
+        actor.attemptsTo(Scroll.to(TABLE_ITEMS));
+    }
+
+}
